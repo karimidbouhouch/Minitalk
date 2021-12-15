@@ -1,27 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   minitalk.h                                         :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/12 21:15:21 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/15 00:50:37 by kid-bouh         ###   ########.fr       */
+/*   Created: 2021/12/14 20:54:59 by kid-bouh          #+#    #+#             */
+/*   Updated: 2021/12/14 21:02:20 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#include "minitalk.h"
 
-# include <signal.h>
-# include <unistd.h>
-# include <stdlib.h>
+void	ft_putnbr(int n)
+{
+	char	c;
 
-void	ft_putstr(char *str);
-int		ft_atoi(const char *str);
-char	*ft_strjoin(char const *s1, char const *s2);
-int		ft_strlen(const char *s);
-char	*ft_strdup(const char *s);
-void	ft_putnbr(int n);
-
-#endif
+	if (n == -2147483648)
+		ft_putstr("-2147483648");
+	else
+	{
+		if (n < 0)
+		{
+			write(1, "-", 1);
+			n = n * (-1);
+		}
+		if (n >= 0 && n <= 9)
+		{
+			c = n + '0';
+			write(1, &c, 1);
+		}
+		if (n > 9)
+		{
+			ft_putnbr(n / 10);
+			ft_putnbr(n % 10);
+		}
+	}
+}

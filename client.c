@@ -6,15 +6,15 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 21:14:30 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/14 04:11:32 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/15 01:30:53 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void send_bits(int pid, char c)
+void	send_bits(int pid, char c)
 {
-	int i;
+	int	i;
 
 	i = 7;
 	while (i >= 0)
@@ -28,26 +28,26 @@ void send_bits(int pid, char c)
 	}
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	int		pid;
 	char	*str;
 	int		i;
 
 	i = 0;
-	if(ac == 3)
+	if (ac == 3)
 	{
-	 	pid = ft_atoi(av[1]);
+		pid = ft_atoi(av[1]);
 		str = av[2];
-		while(str[i])
+		while (str[i])
 		{
-			send_bits(pid,str[i]);
+			send_bits(pid, str[i]);
 			i++;
 		}
-		send_bits(pid,'\n');
+		send_bits(pid, '\n');
 	}
 	else
 	{
-		ft_putstr("Error !");
+		ft_putstr("Syntax error");
 	}
 }

@@ -6,20 +6,20 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 22:19:04 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/13 22:51:35 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/15 01:31:39 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void ft_putstr(char *str)
+void	ft_putstr(char *str)
 {
 	int	i;
 
 	i = 0;
-	while(str[i])
+	while (str[i])
 	{
-		write(1,&str[i],1);
+		write(1, &str[i], 1);
 		i++;
 	}
 }
