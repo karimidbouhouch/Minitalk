@@ -1,6 +1,6 @@
 NAME = libft.a
-NAME1 = server
-NAME2 = client
+SERVER = server
+CLIENT = client
 
 INC = minitalk.h
 
@@ -15,12 +15,19 @@ all : $(NAME)
 $(NAME) : $(OBJ) $(INC) server.c client.c
 	gcc -c $(CFLAGS) $(SRC) -I $(INC) 
 	ar -cr $(NAME) $(OBJ)
-	gcc $(CFLAGS) server.c $(NAME) -o $(NAME1)
-	gcc $(CFLAGS) client.c $(NAME) -o $(NAME2)
+	gcc $(CFLAGS) server.c $(NAME) -o $(SERVER)
+	gcc $(CFLAGS) client.c $(NAME) -o $(CLIENT)
+
+bonus :
+	gcc -c $(CFLAGS) $(SRC) -I $(INC) 
+	ar -cr $(NAME) $(OBJ)
+	gcc $(CFLAGS) server_bonus.c $(NAME) -o $(SERVER)
+	gcc $(CFLAGS) client_bonus.c $(NAME) -o $(CLIENT)
 
 clean : 
 	rm -rf $(OBJ)
+
 fclean : clean
-	rm -rf $(NAME) $(NAME1) $(NAME2)
+	rm -rf $(NAME) $(SERVER) $(CLIENT)
 
 re : fclean all
