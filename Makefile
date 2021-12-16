@@ -6,7 +6,7 @@ INC = minitalk.h
 
 CFLAGS = -Wall -Wextra -Werror
 
-SRC = ft_atoi.c ft_putstr.c ft_strjoin.c ft_strlen.c ft_strdup.c ft_putnbr.c
+SRC = minitalk_utils_1.c minitalk_utils_2.c
 
 OBJ = $(SRC:.c=.o)
 

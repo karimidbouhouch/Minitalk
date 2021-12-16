@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 21:15:21 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/16 05:09:45 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/16 06:11:31 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,5 +23,6 @@ char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_strlen(const char *s);
 char	*ft_strdup(const char *s);
 void	ft_putnbr(int n);
+void	ft_putchar(char c);
 
 #endif

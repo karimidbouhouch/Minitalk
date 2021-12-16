@@ -6,16 +6,11 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 21:14:28 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/15 01:28:34 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/16 06:08:43 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
-
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
 
 int	get_char(char *bin)
 {
