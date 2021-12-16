@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 02:56:31 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/15 03:11:44 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/16 05:09:27 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,13 @@ int	get_char(char *bin)
 	return (nb);
 }
 
-void	handler(int signum)
+void	handler(int signum, siginfo_t *info, void *context)
 {
 	static char	*bin;
+	int			index;
 
+	index = 0;
+	(void) context;
 	if (bin == NULL)
 		bin = ft_strdup("");
 	if (signum == SIGUSR1)
@@ -48,18 +51,25 @@ void	handler(int signum)
 		bin = ft_strjoin(bin, "0\0");
 	if (ft_strlen(bin) == 8)
 	{
+		if (get_char(bin) == 0)
+			index = 1;
 		ft_putchar(get_char(bin));
 		free(bin);
 		bin = NULL;
 	}
+	if (index == 1)
+		kill(info->si_pid, SIGUSR1);
 }
 
 int	main(void)
 {
-	int	pid;
+	int					pid;
+	struct sigaction	sa;
 
-	signal(SIGUSR1, handler);
-	signal(SIGUSR2, handler);
+	sa.sa_sigaction = &handler;
+	sa.sa_flags = SA_SIGINFO;
+	sigaction(SIGUSR1, &sa, NULL);
+	sigaction(SIGUSR2, &sa, NULL);
 	pid = getpid();
 	ft_putstr("PID = ");
 	ft_putnbr(pid);
