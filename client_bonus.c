@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 03:12:03 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/16 05:45:05 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/16 05:49:50 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ int	main(int ac, char **av)
 	int		pid;
 	char	*str;
 	int		i;
-	int		check;
 
 	i = 0;
 	if (ac == 3)
