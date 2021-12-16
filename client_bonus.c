@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 03:12:03 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/16 05:49:50 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/16 06:47:21 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,11 @@ void	send_bits(int pid, char c)
 	i = 7;
 	while (i >= 0)
 	{
+		usleep(500);
 		if (c & (1 << i))
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(170);
 		i--;
 	}
 }
