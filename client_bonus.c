@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 03:12:03 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/15 04:49:38 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/16 05:12:16 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,10 @@ int	send_bits(int pid, char c)
 	return (check);
 }
 
-void	check_if_sent(int check)
+void	handler(int sig)
 {
-	if (check == 0)
-		ft_putstr("signal has been sent successfully !\n");
-	else
-		ft_putstr("something went wrong while sending the message !\n");
+	(void) sig;
+	ft_putstr("signal has been sent successfully\n");
 }
 
 int	main(int ac, char **av)
@@ -50,16 +48,16 @@ int	main(int ac, char **av)
 	{
 		pid = ft_atoi(av[1]);
 		str = av[2];
+		signal(SIGUSR1, handler);
 		while (str[i])
 		{
 			check = send_bits(pid, str[i]);
 			i++;
 		}
-		send_bits(pid, '\n');
-		check_if_sent(check);
+		send_bits(pid, 0);
 	}
 	else
 	{
-		ft_putstr("Syntax error\n");
+		ft_putstr("something went wrong while sending the message !\n");
 	}
 }
