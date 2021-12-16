@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 21:14:30 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/15 01:30:53 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/16 05:45:03 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	send_bits(int pid, char c)
 			kill(pid, SIGUSR1);
 		else
 			kill(pid, SIGUSR2);
-		usleep(50);
+		usleep(170);
 		i--;
 	}
 }
@@ -44,10 +44,9 @@ int	main(int ac, char **av)
 			send_bits(pid, str[i]);
 			i++;
 		}
-		send_bits(pid, '\n');
 	}
 	else
 	{
-		ft_putstr("Syntax error");
+		ft_putstr("Syntax error !\n");
 	}
 }

@@ -6,28 +6,26 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 03:12:03 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/16 05:12:16 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/16 05:45:05 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-int	send_bits(int pid, char c)
+void	send_bits(int pid, char c)
 {
 	int	i;
-	int	check;
 
 	i = 7;
 	while (i >= 0)
 	{
 		if (c & (1 << i))
-			check = kill(pid, SIGUSR1);
+			kill(pid, SIGUSR1);
 		else
-			check = kill(pid, SIGUSR2);
-		usleep(50);
+			kill(pid, SIGUSR2);
+		usleep(170);
 		i--;
 	}
-	return (check);
 }
 
 void	handler(int sig)
@@ -51,13 +49,13 @@ int	main(int ac, char **av)
 		signal(SIGUSR1, handler);
 		while (str[i])
 		{
-			check = send_bits(pid, str[i]);
+			send_bits(pid, str[i]);
 			i++;
 		}
 		send_bits(pid, 0);
 	}
 	else
 	{
-		ft_putstr("something went wrong while sending the message !\n");
+		ft_putstr("Syntax error !\n");
 	}
 }
