@@ -6,16 +6,13 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 02:56:31 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/16 05:09:27 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/16 22:42:27 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minitalk.h"
 
-void	ft_putchar(char c)
-{
-	write(1, &c, 1);
-}
+int	g_pid = 0;
 
 int	get_char(char *bin)
 {
@@ -36,13 +33,17 @@ int	get_char(char *bin)
 	return (nb);
 }
 
-void	handler(int signum, siginfo_t *info, void *context)
+void	handler(int signum, siginfo_t *sig_info, void *context)
 {
 	static char	*bin;
-	int			index;
 
-	index = 0;
 	(void) context;
+	if (g_pid != sig_info->si_pid)
+	{
+		free(bin);
+		bin = NULL;
+		g_pid = sig_info->si_pid;
+	}
 	if (bin == NULL)
 		bin = ft_strdup("");
 	if (signum == SIGUSR1)
@@ -52,13 +53,11 @@ void	handler(int signum, siginfo_t *info, void *context)
 	if (ft_strlen(bin) == 8)
 	{
 		if (get_char(bin) == 0)
-			index = 1;
+			kill(sig_info->si_pid, SIGUSR1);
 		ft_putchar(get_char(bin));
 		free(bin);
 		bin = NULL;
 	}
-	if (index == 1)
-		kill(info->si_pid, SIGUSR1);
 }
 
 int	main(void)

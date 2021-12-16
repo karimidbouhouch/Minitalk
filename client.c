@@ -6,7 +6,7 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/12 21:14:30 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/16 06:25:32 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/16 21:59:27 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,12 @@ void	send_bits(int pid, char c)
 	}
 }
 
+void	handler(int sig)
+{
+	(void) sig;
+	ft_putstr("signal has been sent successfully\n");
+}
+
 int	main(int ac, char **av)
 {
 	int		pid;
@@ -39,11 +45,14 @@ int	main(int ac, char **av)
 	{
 		pid = ft_atoi(av[1]);
 		str = av[2];
+		signal(SIGUSR1, handler);
 		while (str[i])
 		{
 			send_bits(pid, str[i]);
 			i++;
 		}
+		send_bits(pid, 0);
+		pause();
 	}
 	else
 	{
