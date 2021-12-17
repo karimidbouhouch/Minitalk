@@ -6,11 +6,11 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 02:56:31 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/16 22:42:27 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/16 22:57:11 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 int	g_pid = 0;
 

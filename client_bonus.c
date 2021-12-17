@@ -6,11 +6,11 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 03:12:03 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/16 22:16:04 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/16 22:57:16 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minitalk.h"
+#include "minitalk_bonus.h"
 
 void	send_bits(int pid, char c)
 {
