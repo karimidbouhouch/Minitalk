@@ -6,12 +6,12 @@
 /*   By: kid-bouh <kid-bouh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/16 22:56:49 by kid-bouh          #+#    #+#             */
-/*   Updated: 2021/12/16 22:56:58 by kid-bouh         ###   ########.fr       */
+/*   Updated: 2021/12/17 01:52:16 by kid-bouh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MINITALK_H
-# define MINITALK_H
+#ifndef MINITALK_BONUS_H
+# define MINITALK_BONUS_H
 
 # include <signal.h>
 # include <unistd.h>
